@@ -1,4 +1,4 @@
-module github.com/turnage/graw
+module github.com/lukahartwig/graw
 
 go 1.13
 
