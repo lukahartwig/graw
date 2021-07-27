@@ -134,7 +134,7 @@ func parseMoreChildren(
 
 	wrapped = wrapped["json"].(map[string]interface{})
 	if len(wrapped["errors"].([]interface{})) != 0 {
-		return nil, nil, fmt.Errorf("API errors were returned: %v", wrapped["errors"])
+		return nil, nil, fmt.Errorf("api errors were returned: %v", wrapped["errors"])
 	}
 
 	data := wrapped["data"].(map[string]interface{})
@@ -145,7 +145,7 @@ func parseMoreChildren(
 		data["data"] = things
 		delete(data, "things")
 	} else {
-		return nil, nil, fmt.Errorf("No thing types returned")
+		return nil, nil, fmt.Errorf("no thing types returned")
 	}
 
 	var m more

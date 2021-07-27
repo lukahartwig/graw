@@ -54,9 +54,9 @@ func TestForemanError(t *testing.T) {
 
 	go func() {
 		errs <- nil
-		errs <- reddit.BusyErr
-		errs <- reddit.GatewayErr
-		errs <- reddit.GatewayTimeoutErr
+		errs <- reddit.ErrBusy
+		errs <- reddit.ErrGateway
+		errs <- reddit.ErrGatewayTimeout
 		errs <- uniqueError
 	}()
 	waitForForeman(result, uniqueError, t)

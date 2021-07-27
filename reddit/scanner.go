@@ -1,8 +1,5 @@
 package reddit
 
-// deletedAuthor is the author field of deleted posts on Reddit.
-const deletedAuthor = "[deleted]"
-
 // Scanner defines a low level interface for fetching reading Reddit listings.
 type Scanner interface {
 	// Listing returns a harvest from a listing endpoint at Reddit.

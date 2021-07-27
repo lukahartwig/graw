@@ -123,7 +123,7 @@ func (r *reaperImpl) rateBlock() {
 	defer r.mu.Unlock()
 
 	if time.Since(r.last) < r.rate {
-		<-time.After(r.last.Add(r.rate).Sub(time.Now()))
+		<-time.After(time.Until(r.last.Add(r.rate)))
 	}
 	r.last = time.Now()
 }

@@ -35,7 +35,7 @@ func (a *appClient) Do(req *http.Request) ([]byte, error) {
 }
 
 func (a *appClient) authorize() error {
-	ctx := context.WithValue(oauth2.NoContext, oauth2.HTTPClient, a.cli)
+	ctx := context.WithValue(context.Background(), oauth2.HTTPClient, a.cli)
 
 	if a.cfg.app.Username == "" || a.cfg.app.Password == "" {
 		a.baseClient.cli = a.clientCredentialsClient(ctx)

@@ -44,15 +44,15 @@ func (b *baseClient) Do(req *http.Request) ([]byte, error) {
 	switch resp.StatusCode {
 	case http.StatusOK:
 	case http.StatusForbidden:
-		return nil, PermissionDeniedErr
+		return nil, ErrPermissionDenied
 	case http.StatusServiceUnavailable:
-		return nil, BusyErr
+		return nil, ErrBusy
 	case http.StatusTooManyRequests:
-		return nil, RateLimitErr
+		return nil, ErrRateLimit
 	case http.StatusBadGateway:
-		return nil, GatewayErr
+		return nil, ErrGateway
 	case http.StatusGatewayTimeout:
-		return nil, GatewayTimeoutErr
+		return nil, ErrGatewayTimeout
 	default:
 		return nil, fmt.Errorf("bad response code: %d", resp.StatusCode)
 	}

@@ -71,17 +71,17 @@ func TestReap(t *testing.T) {
 	} {
 		expected := Harvest{
 			Comments: []*Comment{
-				&Comment{
+				{
 					Body: "comment",
 				},
 			},
 			Posts: []*Post{
-				&Post{
+				{
 					SelfText: "post",
 				},
 			},
 			Messages: []*Message{
-				&Message{
+				{
 					Body: "message",
 				},
 			},

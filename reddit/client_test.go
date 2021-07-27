@@ -35,11 +35,11 @@ func TestDo(t *testing.T) {
 		err  error
 	}{
 		{[]byte("expected"), http.StatusOK, nil},
-		{nil, http.StatusForbidden, PermissionDeniedErr},
-		{nil, http.StatusServiceUnavailable, BusyErr},
-		{nil, http.StatusTooManyRequests, RateLimitErr},
-		{nil, http.StatusBadGateway, GatewayErr},
-		{nil, http.StatusGatewayTimeout, GatewayTimeoutErr},
+		{nil, http.StatusForbidden, ErrPermissionDenied},
+		{nil, http.StatusServiceUnavailable, ErrBusy},
+		{nil, http.StatusTooManyRequests, ErrRateLimit},
+		{nil, http.StatusBadGateway, ErrGateway},
+		{nil, http.StatusGatewayTimeout, ErrGatewayTimeout},
 		{nil, http.StatusOK, nil},
 	} {
 		serv := serverWhich(test.body, test.code)
