@@ -3,9 +3,9 @@ graw
 
 ![Build Status](https://travis-ci.org/turnage/graw.svg?branch=master)
 ![Version: 1.2.0](https://img.shields.io/badge/version-1.2.0-brightgreen.svg)
-[![GoDoc](https://godoc.org/github.com/turnage/graw?status.svg)](https://godoc.org/github.com/turnage/graw)
+[![GoDoc](https://godoc.org/github.com/lukahartwig/graw?status.svg)](https://godoc.org/github.com/lukahartwig/graw)
 
-    go get github.com/turnage/graw
+    go get github.com/lukahartwig/graw
 
 graw is a library for building Reddit bots that takes care of everything you
 don't want to. [Read the tutorial book](https://turnage.gitbooks.io/graw/content/)!
@@ -29,9 +29,9 @@ func (a *announcer) Post(post *reddit.Post) error {
 ````
 
 Give this to graw with an
-[api handle from the reddit package](https://godoc.org/github.com/turnage/graw/reddit)
+[api handle from the reddit package](https://godoc.org/github.com/lukahartwig/graw/reddit)
 and a tell it what events you want to subscribe to; graw will take care of the
-rest. See the [godoc](https://godoc.org/github.com/turnage/graw) and
+rest. See the [godoc](https://godoc.org/github.com/lukahartwig/graw) and
 [tutorial book](https://turnage.gitbooks.io/graw/content/) for more information.
 
 ### Features

@@ -7,7 +7,7 @@ package rsort
 import (
 	"sort"
 
-	"github.com/turnage/graw/reddit"
+	"github.com/lukahartwig/graw/reddit"
 )
 
 // Sorter sorts Reddit element harvests.

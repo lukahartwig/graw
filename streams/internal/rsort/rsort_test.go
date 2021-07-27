@@ -3,7 +3,7 @@ package rsort
 import (
 	"testing"
 
-	"github.com/turnage/graw/reddit"
+	"github.com/lukahartwig/graw/reddit"
 )
 
 func TestSort(t *testing.T) {
