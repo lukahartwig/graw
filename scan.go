@@ -9,18 +9,18 @@ import (
 )
 
 var (
-	postHandlerErr = fmt.Errorf(
-		"You must implement PostHandler to handle subreddit feeds.",
+	errPostHandler = fmt.Errorf(
+		"you must implement PostHandler to handle subreddit feeds",
 	)
-	commentHandlerErr = fmt.Errorf(
-		"You must implement CommentHandler to handle subreddit " +
-			"comment feeds.",
+	errCommentHandler = fmt.Errorf(
+		"you must implement CommentHandler to handle subreddit " +
+			"comment feeds",
 	)
-	userHandlerErr = fmt.Errorf(
-		"You must implement UserHandler to handle user feeds.",
+	errUserHandler = fmt.Errorf(
+		"you must implement UserHandler to handle user feeds",
 	)
-	loggedOutErr = fmt.Errorf(
-		"You must be running as a logged in bot to get inbox feeds.",
+	errLoggedOut = fmt.Errorf(
+		"you must be running as a logged in bot to get inbox feeds",
 	)
 )
 
@@ -37,7 +37,7 @@ func Scan(handler interface{}, script reddit.Script, cfg Config) (
 	errs := make(chan error)
 
 	if cfg.PostReplies || cfg.CommentReplies || cfg.Mentions || cfg.Messages {
-		return nil, nil, loggedOutErr
+		return nil, nil, errLoggedOut
 	}
 
 	if err := connectScanStreams(
@@ -65,7 +65,7 @@ func connectScanStreams(
 	if len(c.Subreddits) > 0 {
 		ph, ok := handler.(botfaces.PostHandler)
 		if !ok {
-			return postHandlerErr
+			return errPostHandler
 		}
 
 		if posts, err := streams.Subreddits(
@@ -87,7 +87,7 @@ func connectScanStreams(
 	if len(c.CustomFeeds) > 0 {
 		ph, ok := handler.(botfaces.PostHandler)
 		if !ok {
-			return postHandlerErr
+			return errPostHandler
 		}
 
 		for user, feeds := range c.CustomFeeds {
@@ -112,7 +112,7 @@ func connectScanStreams(
 	if len(c.SubredditComments) > 0 {
 		ch, ok := handler.(botfaces.CommentHandler)
 		if !ok {
-			return commentHandlerErr
+			return errCommentHandler
 		}
 
 		if comments, err := streams.SubredditComments(
@@ -134,7 +134,7 @@ func connectScanStreams(
 	if len(c.Users) > 0 {
 		uh, ok := handler.(botfaces.UserHandler)
 		if !ok {
-			return userHandlerErr
+			return errUserHandler
 		}
 
 		for _, user := range c.Users {

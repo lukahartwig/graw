@@ -9,17 +9,17 @@ import (
 )
 
 var (
-	postReplyHandlerErr = fmt.Errorf(
-		"You must implement PostReplHandler to take post reply feeds.",
+	errPostReplyHandler = fmt.Errorf(
+		"you must implement PostReplHandler to take post reply feeds",
 	)
-	commentReplyHandlerErr = fmt.Errorf(
-		"You must implement CommentReplyHandler to take comment reply feeds.",
+	errCommentReplyHandler = fmt.Errorf(
+		"you must implement CommentReplyHandler to take comment reply feeds",
 	)
-	mentionHandlerErr = fmt.Errorf(
-		"You must implement MentionHandler to take mention feeds.",
+	errMentionHandler = fmt.Errorf(
+		"you must implement MentionHandler to take mention feeds",
 	)
-	messageHandlerErr = fmt.Errorf(
-		"You must implement MessageHandler to take message feeds.",
+	errMessageHandler = fmt.Errorf(
+		"you must implement MessageHandler to take message feeds",
 	)
 )
 
@@ -69,7 +69,7 @@ func connectAllStreams(
 
 	if c.PostReplies {
 		if prh, ok := handler.(botfaces.PostReplyHandler); !ok {
-			return postReplyHandlerErr
+			return errPostReplyHandler
 		} else if prs, err := streams.PostReplies(
 			bot,
 			kill,
@@ -87,7 +87,7 @@ func connectAllStreams(
 
 	if c.CommentReplies {
 		if crh, ok := handler.(botfaces.CommentReplyHandler); !ok {
-			return commentReplyHandlerErr
+			return errCommentReplyHandler
 		} else if crs, err := streams.CommentReplies(
 			bot,
 			kill,
@@ -105,7 +105,7 @@ func connectAllStreams(
 
 	if c.Mentions {
 		if mh, ok := handler.(botfaces.MentionHandler); !ok {
-			return mentionHandlerErr
+			return errMentionHandler
 		} else if ms, err := streams.Mentions(
 			bot,
 			kill,
@@ -123,7 +123,7 @@ func connectAllStreams(
 
 	if c.Messages {
 		if mh, ok := handler.(botfaces.MessageHandler); !ok {
-			return messageHandlerErr
+			return errMessageHandler
 		} else if ms, err := streams.Messages(
 			bot,
 			kill,
