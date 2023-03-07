@@ -10,7 +10,7 @@ require (
 	github.com/mitchellh/mapstructure v1.4.1
 	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/turnage/redditproto v0.0.0-20151223012412-afedf1b6eddb
-	golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985
+	golang.org/x/net v0.7.0
 	golang.org/x/oauth2 v0.0.0-20210628180205-a41e5a781914
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
